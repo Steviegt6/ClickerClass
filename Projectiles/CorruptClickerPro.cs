@@ -24,7 +24,7 @@ namespace ClickerClass.Projectiles
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             Player player = Main.player[projectile.owner];
-            damage = (int)(damage + (target.defense / 2));
+            damage = damage + (target.defense / 2);
             hitDirection = target.Center.X < player.Center.X ? -1 : 1;
         }
 
@@ -41,11 +41,11 @@ namespace ClickerClass.Projectiles
                 int num7 = Main.rand.Next(-50, 51);
                 int num8 = Main.rand.Next(-50, 51);
                 Dust dust = Main.dust[num6];
-                dust.position.X += (float)num7;
+                dust.position.X += num7;
                 Dust dust2 = Main.dust[num6];
-                dust2.position.Y += (float)num8;
-                Main.dust[num6].velocity.X = -(float)num7 * 0.075f;
-                Main.dust[num6].velocity.Y = -(float)num8 * 0.075f;
+                dust2.position.Y += num8;
+                Main.dust[num6].velocity.X = -num7 * 0.075f;
+                Main.dust[num6].velocity.Y = -num8 * 0.075f;
             }
         }
     }

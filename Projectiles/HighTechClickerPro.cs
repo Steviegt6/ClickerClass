@@ -38,7 +38,7 @@ namespace ClickerClass.Projectiles
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             Player player = Main.player[projectile.owner];
-            damage = (int)(damage + (target.defense / 2));
+            damage = damage + (target.defense / 2);
             hitDirection = target.Center.X < player.Center.X ? -1 : 1;
         }
 
@@ -57,8 +57,8 @@ namespace ClickerClass.Projectiles
             Player player = Main.player[projectile.owner];
             for (int num363 = 0; num363 < 1; num363++)
             {
-                float num364 = projectile.velocity.X / 3f * (float)num363;
-                float num365 = projectile.velocity.Y / 3f * (float)num363;
+                float num364 = projectile.velocity.X / 3f * num363;
+                float num365 = projectile.velocity.Y / 3f * num363;
                 int num366 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 229, 0f, 0f, 0, default, 1.15f);
                 Main.dust[num366].position.X = projectile.Center.X - num364;
                 Main.dust[num366].position.Y = projectile.Center.Y - num365;
@@ -95,9 +95,9 @@ namespace ClickerClass.Projectiles
                 {
                     if (Main.npc[num480].active && !targets.Contains(Main.npc[num480].whoAmI) && Main.npc[num480].CanBeChasedBy(projectile, false) && projectile.Distance(Main.npc[num480].Center) < num479 && Collision.CanHit(projectile.Center, 1, 1, Main.npc[num480].Center, 1, 1))
                     {
-                        float num481 = Main.npc[num480].position.X + (float)(Main.npc[num480].width / 2);
-                        float num482 = Main.npc[num480].position.Y + (float)(Main.npc[num480].height / 2);
-                        float num483 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num481) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num482);
+                        float num481 = Main.npc[num480].position.X + Main.npc[num480].width / 2;
+                        float num482 = Main.npc[num480].position.Y + Main.npc[num480].height / 2;
+                        float num483 = Math.Abs(projectile.position.X + projectile.width / 2 - num481) + Math.Abs(projectile.position.Y + projectile.height / 2 - num482);
                         if (num483 < num479)
                         {
                             num479 = num483;
@@ -113,10 +113,10 @@ namespace ClickerClass.Projectiles
                 {
                     float num488 = 2.5f;
 
-                    Vector2 vector38 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+                    Vector2 vector38 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
                     float num489 = num477 - vector38.X;
                     float num490 = num478 - vector38.Y;
-                    float num491 = (float)Math.Sqrt((double)(num489 * num489 + num490 * num490));
+                    float num491 = (float)Math.Sqrt(num489 * num489 + num490 * num490);
                     num491 = num488 / num491;
                     num489 *= num491;
                     num490 *= num491;

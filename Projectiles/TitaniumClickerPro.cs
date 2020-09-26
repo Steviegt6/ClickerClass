@@ -33,7 +33,7 @@ namespace ClickerClass.Projectiles
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             Player player = Main.player[projectile.owner];
-            damage = (int)(damage + (target.defense / 2));
+            damage = damage + (target.defense / 2);
             hitDirection = target.Center.X < player.Center.X ? -1 : 1;
         }
 
@@ -43,7 +43,7 @@ namespace ClickerClass.Projectiles
             for (int k = 0; k < projectile.oldPos.Length; k++)
             {
                 Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-                Color color = projectile.GetAlpha(lightColor * 0.25f) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                Color color = projectile.GetAlpha(lightColor * 0.25f) * ((projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
                 spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color * (0.0025f * projectile.timeLeft), rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
             }
             return true;

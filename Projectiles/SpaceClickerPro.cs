@@ -32,7 +32,7 @@ namespace ClickerClass.Projectiles
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             Player player = Main.player[projectile.owner];
-            damage = (int)(damage + (target.defense / 2));
+            damage = damage + (target.defense / 2);
             hitDirection = target.Center.X < player.Center.X ? -1 : 1;
         }
 
@@ -59,7 +59,7 @@ namespace ClickerClass.Projectiles
                 for (int k = 0; k < projectile.oldPos.Length; k++)
                 {
                     Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-                    Color color = projectile.GetAlpha(new Color(255, 255, 255, 0) * 0.25f) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                    Color color = projectile.GetAlpha(new Color(255, 255, 255, 0) * 0.25f) * ((projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
                     spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, frame, color * 0.25f, rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
                 }
             }
@@ -99,11 +99,11 @@ namespace ClickerClass.Projectiles
 
                     float num102 = 30f;
                     int num103 = 0;
-                    while ((float)num103 < num102)
+                    while (num103 < num102)
                     {
                         Vector2 vector12 = Vector2.UnitX * 0f;
-                        vector12 += -Vector2.UnitY.RotatedBy((double)((float)num103 * (6.28318548f / num102)), default) * new Vector2(8f, 8f);
-                        vector12 = vector12.RotatedBy((double)projectile.velocity.ToRotation(), default);
+                        vector12 += -Vector2.UnitY.RotatedBy(num103 * (6.28318548f / num102), default) * new Vector2(8f, 8f);
+                        vector12 = vector12.RotatedBy(projectile.velocity.ToRotation(), default);
                         int num104 = Dust.NewDust(projectile.Center, 0, 0, dustType, 0f, 0f, 0, default, 1.25f);
                         if (projectile.frame == 1) { Main.dust[num104].shader = GameShaders.Armor.GetSecondaryShader(70, Main.LocalPlayer); }
                         Main.dust[num104].noGravity = true;
@@ -122,12 +122,12 @@ namespace ClickerClass.Projectiles
                 projectile.tileCollide = false;
                 projectile.friendly = true;
                 projectile.alpha = 255;
-                projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-                projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
+                projectile.position.X = projectile.position.X + projectile.width / 2;
+                projectile.position.Y = projectile.position.Y + projectile.height / 2;
                 projectile.width = 150;
                 projectile.height = 150;
-                projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-                projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+                projectile.position.X = projectile.position.X - projectile.width / 2;
+                projectile.position.Y = projectile.position.Y - projectile.height / 2;
             }
         }
     }
