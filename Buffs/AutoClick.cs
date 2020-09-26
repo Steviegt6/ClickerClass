@@ -9,11 +9,8 @@ namespace ClickerClass.Buffs
         {
             DisplayName.SetDefault("Auto Click");
             Description.SetDefault("Hold down the Left Mouse Button to auto click");
-            Main.buffNoSave[Type] = false;
-        }
 
-        public override void Update(Player player, ref int buffIndex)
-        {
+            Main.buffNoSave[Type] = false;
         }
     }
 }

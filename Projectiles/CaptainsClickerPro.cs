@@ -56,7 +56,7 @@ namespace ClickerClass.Projectiles
 
             for (int l = 0; l < 2; l++)
             {
-                int num235 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y) - projectile.velocity, projectile.width, projectile.height, 31, 0f, 0f, 125, default(Color), 1f);
+                int num235 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y) - projectile.velocity, projectile.width, projectile.height, 31, 0f, 0f, 125, default, 1f);
                 Dust dust4 = Main.dust[num235];
                 dust4 = Main.dust[num235];
                 dust4.velocity *= 0f;

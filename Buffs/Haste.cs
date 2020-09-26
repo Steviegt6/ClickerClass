@@ -9,6 +9,7 @@ namespace ClickerClass.Buffs
         {
             DisplayName.SetDefault("Haste");
             Description.SetDefault("Movement speed and jump speed increased");
+
             Main.buffNoSave[Type] = false;
         }
 

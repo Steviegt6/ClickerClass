@@ -57,7 +57,7 @@ namespace ClickerClass.Projectiles
 
         public override void AI()
         {
-            projectile.frame = (int)(projectile.ai[0]);
+            projectile.frame = (int)projectile.ai[0];
             projectile.rotation += projectile.velocity.X > 0f ? 0.2f : -0.2f;
 
             timer++;
@@ -75,9 +75,9 @@ namespace ClickerClass.Projectiles
                 while ((float)num103 < num102)
                 {
                     Vector2 vector12 = Vector2.UnitX * 0f;
-                    vector12 += -Vector2.UnitY.RotatedBy((double)((float)num103 * (6.28318548f / num102)), default(Vector2)) * new Vector2(2f, 2f);
-                    vector12 = vector12.RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2));
-                    int num104 = Dust.NewDust(projectile.Center, 0, 0, 86, 0f, 0f, 0, default(Color), 1.25f);
+                    vector12 += -Vector2.UnitY.RotatedBy((double)((float)num103 * (6.28318548f / num102)), default) * new Vector2(2f, 2f);
+                    vector12 = vector12.RotatedBy((double)projectile.velocity.ToRotation(), default);
+                    int num104 = Dust.NewDust(projectile.Center, 0, 0, 86, 0f, 0f, 0, default, 1.25f);
                     Main.dust[num104].noGravity = true;
                     Main.dust[num104].position = projectile.Center + vector12;
                     Main.dust[num104].velocity = projectile.velocity * 0f + vector12.SafeNormalize(Vector2.UnitY) * 2f;

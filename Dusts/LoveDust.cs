@@ -6,10 +6,7 @@ namespace ClickerClass.Dusts
 {
     public class LoveDust : ModDust
     {
-        public override void OnSpawn(Dust dust)
-        {
-            dust.scale *= 1.25f;
-        }
+        public override void OnSpawn(Dust dust) => dust.scale *= 1.25f;
 
         public override bool MidUpdate(Dust dust)
         {
@@ -22,6 +19,7 @@ namespace ClickerClass.Dusts
             if (!dust.noLight)
             {
                 float strength = dust.scale * 1.4f;
+
                 if (strength > 1f)
                 {
                     strength = 1f;
@@ -33,9 +31,6 @@ namespace ClickerClass.Dusts
             return false;
         }
 
-        public override Color? GetAlpha(Dust dust, Color lightColor)
-        {
-            return new Color(lightColor.R, lightColor.G, lightColor.B, 0);
-        }
+        public override Color? GetAlpha(Dust dust, Color lightColor) => new Color(lightColor.R, lightColor.G, lightColor.B, 0);
     }
 }

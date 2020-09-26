@@ -102,9 +102,9 @@ namespace ClickerClass.Projectiles
                     while ((float)num103 < num102)
                     {
                         Vector2 vector12 = Vector2.UnitX * 0f;
-                        vector12 += -Vector2.UnitY.RotatedBy((double)((float)num103 * (6.28318548f / num102)), default(Vector2)) * new Vector2(8f, 8f);
-                        vector12 = vector12.RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2));
-                        int num104 = Dust.NewDust(projectile.Center, 0, 0, dustType, 0f, 0f, 0, default(Color), 1.25f);
+                        vector12 += -Vector2.UnitY.RotatedBy((double)((float)num103 * (6.28318548f / num102)), default) * new Vector2(8f, 8f);
+                        vector12 = vector12.RotatedBy((double)projectile.velocity.ToRotation(), default);
+                        int num104 = Dust.NewDust(projectile.Center, 0, 0, dustType, 0f, 0f, 0, default, 1.25f);
                         if (projectile.frame == 1) { Main.dust[num104].shader = GameShaders.Armor.GetSecondaryShader(70, Main.LocalPlayer); }
                         Main.dust[num104].noGravity = true;
                         Main.dust[num104].position = projectile.Center + vector12;

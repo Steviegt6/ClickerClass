@@ -10,15 +10,13 @@ namespace ClickerClass.Buffs
         {
             DisplayName.SetDefault("Gouge");
             Description.SetDefault("Rapidly losing life");
+
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;
             longerExpertDebuff = true;
         }
 
-        public override void Update(NPC npc, ref int buffIndex)
-        {
-            npc.GetGlobalNPC<ClickerGlobalNPC>().gouge = true;
-        }
+        public override void Update(NPC npc, ref int buffIndex) => npc.GetGlobalNPC<ClickerGlobalNPC>().gouge = true;
     }
 }

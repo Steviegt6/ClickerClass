@@ -18,7 +18,6 @@ namespace ClickerClass
     {
         //Key presses
         public double pressedAutoClick;
-
         public int clickerClassTime = 0;
 
         public Color clickerColor = new Color(0, 0, 0, 0);
@@ -49,47 +48,26 @@ namespace ClickerClass
             clickerBonus = 0;
         }
 
-        public override void Initialize()
-        {
-            clickerTotal = 0;
-        }
+        public override void Initialize() => clickerTotal = 0;
 
-        public override TagCompound Save()
-        {
-            return new TagCompound
-            {
-                {"clickerTotal", clickerTotal}
-            };
-        }
+        public override TagCompound Save() => new TagCompound { {"clickerTotal", clickerTotal} };
 
-        public override void Load(TagCompound tag)
-        {
-            clickerTotal = tag.GetInt("clickerTotal");
-        }
+        public override void Load(TagCompound tag) => clickerTotal = tag.GetInt("clickerTotal");
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            // checks for frozen, webbed and stoned
-            if (player.CCed)
+            if (!player.CCed && ClickerClass.AutoClickKey.JustPressed && Math.Abs(clickerClassTime - pressedAutoClick) > 60)
             {
-                return;
-            }
-
-            if (ClickerClass.AutoClickKey.JustPressed)
-            {
-                if (Math.Abs(clickerClassTime - pressedAutoClick) > 60)
-                {
-                    pressedAutoClick = clickerClassTime;
-
-                    Main.PlaySound(SoundID.MenuTick, player.position);
-                    clickerAutoClick = clickerAutoClick ? false : true;
-                }
+                pressedAutoClick = clickerClassTime;
+                clickerAutoClick = !clickerAutoClick;
+                Main.PlaySound(SoundID.MenuTick, player.position);
             }
         }
 
         public override void PostUpdateEquips()
         {
             clickerClassTime++;
+
             if (clickerClassTime > 36000)
             {
                 clickerClassTime = 0;
@@ -103,14 +81,17 @@ namespace ClickerClass
             if (player.HeldItem.modItem is ClickerItem clickerItem && clickerItem.isClicker)
             {
                 clickerSelected = true;
+
                 if (clickerItem.radiusBoost > 0f)
                 {
                     clickerRadius += clickerItem.radiusBoost;
                 }
+
                 if (Vector2.Distance(Main.MouseWorld, player.Center) < 100 * clickerRadius && Collision.CanHit(new Vector2(player.Center.X, player.Center.Y - 12), 1, 1, Main.MouseWorld, 1, 1))
                 {
                     clickerInRange = true;
                 }
+
                 clickerColor = clickerItem.clickerColorItem;
             }
 
@@ -122,18 +103,16 @@ namespace ClickerClass
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            if (player.HeldItem.modItem is ClickerItem clickerItem && clickerItem.isClicker)
+            if (player.HeldItem.modItem is ClickerItem clickerItem && clickerItem.isClicker && target.GetGlobalNPC<ClickerGlobalNPC>().embrittle)
             {
-                if (target.GetGlobalNPC<ClickerGlobalNPC>().embrittle)
-                {
-                    damage += 8;
-                }
+                damage += 8;
             }
         }
 
         public override void ModifyDrawLayers(List<PlayerLayer> layers)
         {
             int index = layers.IndexOf(PlayerLayer.MiscEffectsFront);
+
             if (index != -1)
             {
                 layers.Insert(index + 1, MiscEffects);
@@ -144,48 +123,39 @@ namespace ClickerClass
 
         public static readonly PlayerLayer MiscEffects = new PlayerLayer("ClickerClass", "MiscEffects", PlayerLayer.MiscEffectsFront, delegate (PlayerDrawInfo drawInfo)
         {
-            Player drawPlayer = drawInfo.drawPlayer;
-            Mod mod = ModLoader.GetMod("ClickerClass");
-            ClickerPlayer modPlayer = drawPlayer.GetModPlayer<ClickerPlayer>();
+            Player player = drawInfo.drawPlayer;
+            ClickerPlayer modPlayer = player.GetModPlayer<ClickerPlayer>();
 
-            if (drawInfo.shadow != 0f)
+            if (drawInfo.shadow == 0f && !player.dead && modPlayer.clickerSelected)
             {
-                return;
-            }
+                bool phaseCheck = false;
 
-            if (!drawPlayer.dead)
-            {
-                if (modPlayer.clickerSelected)
+                if (player.HeldItem.modItem is ClickerItem clickerItem && clickerItem.isClicker && clickerItem.itemClickerEffect.Contains("Phase Reach"))
                 {
-                    bool phaseCheck = false;
-                    if (drawPlayer.HeldItem.modItem is ClickerItem clickerItem && clickerItem.isClicker)
-                    {
-                        if (clickerItem.itemClickerEffect.Contains("Phase Reach"))
-                        {
-                            phaseCheck = true;
-                        }
-                    }
+                    phaseCheck = true;
+                }
 
-                    if (!phaseCheck)
+                if (!phaseCheck)
+                {
+                    float size = modPlayer.clickerRadius;
+                    Texture2D texture = ModContent.GetTexture("ClickerClass/Gores/ClickerRadius100");
+                    if (modPlayer.clickerRadius >= 3f)
                     {
-                        float size = modPlayer.clickerRadius;
-                        Texture2D texture = mod.GetTexture("Gores/ClickerRadius100");
-                        if (modPlayer.clickerRadius >= 3f)
+                        texture = ModContent.GetTexture("ClickerClass/Gores/ClickerRadius200");
+                        size /= 2;
+
+                        if (modPlayer.clickerRadius >= 5f)
                         {
-                            texture = mod.GetTexture("Gores/ClickerRadius200");
-                            size /= 2;
-                            if (modPlayer.clickerRadius >= 5f)
-                            {
-                                texture = mod.GetTexture("Gores/ClickerRadius300");
-                                size = size * 0.67f;
-                            }
+                            texture = ModContent.GetTexture("ClickerClass/Gores/ClickerRadius300");
+                            size *= 0.67f;
                         }
-                        int drawX = (int)(drawInfo.position.X + drawPlayer.width / 2f - Main.screenPosition.X);
-                        int drawY = (int)(drawInfo.position.Y + drawPlayer.height / 2f - Main.screenPosition.Y);
-                        float glow = modPlayer.clickerInRange ? 0.6f : 0f;
-                        DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, modPlayer.clickerColor * (0.2f + glow), 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), size, SpriteEffects.None, 0);
-                        Main.playerDrawData.Add(data);
                     }
+                    int drawX = (int)(drawInfo.position.X + player.width / 2f - Main.screenPosition.X);
+                    int drawY = (int)(drawInfo.position.Y + player.height / 2f - Main.screenPosition.Y);
+                    float glow = modPlayer.clickerInRange ? 0.6f : 0f;
+                    DrawData data = new DrawData(texture, new Vector2(drawX, drawY), null, modPlayer.clickerColor * (0.2f + glow), 0f, new Vector2(texture.Width / 2f, texture.Height / 2f), size, SpriteEffects.None, 0);
+
+                    Main.playerDrawData.Add(data);
                 }
             }
         });

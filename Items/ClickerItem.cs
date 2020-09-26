@@ -10,7 +10,7 @@ namespace ClickerClass.Items
 {
     public abstract class ClickerItem : ModItem
     {
-        public override bool CloneNewInstances { get { return true; } }
+        public override bool CloneNewInstances => true;
 
         public Color clickerColorItem = new Color(0, 0, 0, 0);
         public int itemClickerAmount = 0;
@@ -146,15 +146,15 @@ namespace ClickerClass.Items
                         Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, mod.ProjectileType("SinisterClickerPro"), (int)(damage * 0.50f), knockBack, player.whoAmI);
                         for (int i = 0; i < 15; i++)
                         {
-                            int num6 = Dust.NewDust(Main.MouseWorld, 20, 20, 5, 0f, 0f, 75, default(Color), 1.5f);
+                            int num6 = Dust.NewDust(Main.MouseWorld, 20, 20, 5, 0f, 0f, 75, default, 1.5f);
                             Main.dust[num6].noGravity = true;
                             Main.dust[num6].velocity *= 0.75f;
                             int num7 = Main.rand.Next(-50, 51);
                             int num8 = Main.rand.Next(-50, 51);
                             Dust dust = Main.dust[num6];
-                            dust.position.X = dust.position.X + (float)num7;
+                            dust.position.X += (float)num7;
                             Dust dust2 = Main.dust[num6];
-                            dust2.position.Y = dust2.position.Y + (float)num8;
+                            dust2.position.Y += (float)num8;
                             Main.dust[num6].velocity.X = -(float)num7 * 0.075f;
                             Main.dust[num6].velocity.Y = -(float)num8 * 0.075f;
                         }
@@ -242,15 +242,15 @@ namespace ClickerClass.Items
                         player.AddBuff(mod.BuffType("Haste"), 300, false);
                         for (int i = 0; i < 15; i++)
                         {
-                            int num6 = Dust.NewDust(player.position, 20, 20, 56, 0f, 0f, 150, default(Color), 1.25f);
+                            int num6 = Dust.NewDust(player.position, 20, 20, 56, 0f, 0f, 150, default, 1.25f);
                             Main.dust[num6].noGravity = true;
                             Main.dust[num6].velocity *= 0.75f;
                             int num7 = Main.rand.Next(-50, 51);
                             int num8 = Main.rand.Next(-50, 51);
                             Dust dust = Main.dust[num6];
-                            dust.position.X = dust.position.X + (float)num7;
+                            dust.position.X += (float)num7;
                             Dust dust2 = Main.dust[num6];
-                            dust2.position.Y = dust2.position.Y + (float)num8;
+                            dust2.position.Y += (float)num8;
                             Main.dust[num6].velocity.X = -(float)num7 * 0.075f;
                             Main.dust[num6].velocity.Y = -(float)num8 * 0.075f;
                         }
@@ -269,9 +269,9 @@ namespace ClickerClass.Items
                             int num7 = Main.rand.Next(-50, 51);
                             int num8 = Main.rand.Next(-50, 51);
                             Dust dust = Main.dust[num6];
-                            dust.position.X = dust.position.X + (float)num7;
+                            dust.position.X += (float)num7;
                             Dust dust2 = Main.dust[num6];
-                            dust2.position.Y = dust2.position.Y + (float)num8;
+                            dust2.position.Y += (float)num8;
                             Main.dust[num6].velocity.X = -(float)num7 * 0.075f;
                             Main.dust[num6].velocity.Y = -(float)num8 * 0.075f;
                         }
@@ -413,9 +413,9 @@ namespace ClickerClass.Items
                         while ((float)num103 < num102)
                         {
                             Vector2 vector12 = Vector2.UnitX * 0f;
-                            vector12 += -Vector2.UnitY.RotatedBy((double)((float)num103 * (6.28318548f / num102)), default(Vector2)) * new Vector2(2f, 2f);
-                            vector12 = vector12.RotatedBy((double)Vector2.Zero.ToRotation(), default(Vector2));
-                            int num104 = Dust.NewDust(Main.MouseWorld, 0, 0, 87, 0f, 0f, 0, default(Color), 2f);
+                            vector12 += -Vector2.UnitY.RotatedBy((double)((float)num103 * (6.28318548f / num102)), default) * new Vector2(2f, 2f);
+                            vector12 = vector12.RotatedBy((double)Vector2.Zero.ToRotation(), default);
+                            int num104 = Dust.NewDust(Main.MouseWorld, 0, 0, 87, 0f, 0f, 0, default, 2f);
                             Main.dust[num104].noGravity = true;
                             Main.dust[num104].position = Main.MouseWorld + vector12;
                             Main.dust[num104].velocity = Vector2.Zero * 0f + vector12.SafeNormalize(Vector2.UnitY) * 15f;
@@ -442,15 +442,15 @@ namespace ClickerClass.Items
                         player.AddBuff(mod.BuffType("AutoClick"), 300, false);
                         for (int i = 0; i < 15; i++)
                         {
-                            int num6 = Dust.NewDust(player.position, 20, 20, 15, 0f, 0f, 255, default(Color), 1.5f);
+                            int num6 = Dust.NewDust(player.position, 20, 20, 15, 0f, 0f, 255, default, 1.5f);
                             Main.dust[num6].noGravity = true;
                             Main.dust[num6].velocity *= 0.75f;
                             int num7 = Main.rand.Next(-50, 51);
                             int num8 = Main.rand.Next(-50, 51);
                             Dust dust = Main.dust[num6];
-                            dust.position.X = dust.position.X + (float)num7;
+                            dust.position.X += (float)num7;
                             Dust dust2 = Main.dust[num6];
-                            dust2.position.Y = dust2.position.Y + (float)num8;
+                            dust2.position.Y += (float)num8;
                             Main.dust[num6].velocity.X = -(float)num7 * 0.075f;
                             Main.dust[num6].velocity.Y = -(float)num8 * 0.075f;
                         }

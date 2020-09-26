@@ -18,11 +18,10 @@ namespace ClickerClass.Utilities
         /// <param name="reverseWave">Whether to reverse the wave's motion this iteration.</param>
         public static void SineWaveMovement(this Projectile projectile, float timer, float amplitude, float waveStep, bool firstTick, Action<Projectile> changeDirection = null, bool reverseWave = false)
         {
-            float time = timer * waveStep;
-            float curHeight = (float)Math.Sin(time) * amplitude;
-
             float realSpeed;
             float realRot;
+            float time = timer * waveStep;
+            float curHeight = (float)Math.Sin(time) * amplitude;
 
             if (firstTick)
             {
@@ -33,7 +32,7 @@ namespace ClickerClass.Utilities
             {
                 float heightDiff = curHeight - (float)Math.Sin(time - waveStep) * amplitude;
                 realSpeed = (float)Math.Sqrt(projectile.velocity.LengthSquared() - heightDiff * heightDiff);
-                realRot = projectile.velocity.RotatedBy(-(new Vector2(realSpeed, heightDiff).ToRotation())).ToRotation();
+                realRot = projectile.velocity.RotatedBy(-new Vector2(realSpeed, heightDiff).ToRotation()).ToRotation();
             }
 
             if (changeDirection != null)
@@ -49,6 +48,7 @@ namespace ClickerClass.Utilities
                 amplitude *= -1;
                 curHeight *= -1;
             }
+
             projectile.velocity = new Vector2(realSpeed, (float)Math.Sin(time + waveStep) * amplitude - curHeight).RotatedBy(realRot);
             projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2;
         }

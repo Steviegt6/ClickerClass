@@ -74,7 +74,7 @@ namespace ClickerClass.Projectiles
 
             radiusIncrease += 1;
             rot += 0.05f;
-            projectile.Center = center + RotateVector(default(Vector2), new Vector2(0, 20 + radiusIncrease), rot + (projectile.ai[0] * (6.28f / 5)));
+            projectile.Center = center + RotateVector(default, new Vector2(0, 20 + radiusIncrease), rot + (projectile.ai[0] * (6.28f / 5)));
         }
     }
 }

@@ -6,13 +6,8 @@ namespace ClickerClass
     {
         public static ModHotKey AutoClickKey;
 
-        public override void Load()
-        {
-            AutoClickKey = RegisterHotKey("Clicker Accessory", "G");
-        }
+        public override void Load() => AutoClickKey = RegisterHotKey("Clicker Accessory", "G");
 
-        public ClickerClass()
-        {
-        }
+        public override void Unload() => AutoClickKey = null;
     }
 }
