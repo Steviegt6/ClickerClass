@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria.ID;
 
 namespace ClickerClass.Items
 {
@@ -25,12 +26,12 @@ namespace ClickerClass.Items
             item.height = 30;
             item.useTime = 1;
             item.useAnimation = 1;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.holdStyle = 3;
             item.knockBack = 2f;
             item.noMelee = true;
             item.value = 1000;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.shoot = mod.ProjectileType("ClickDamage");
             item.shootSpeed = 1f;
         }

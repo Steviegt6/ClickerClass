@@ -104,14 +104,14 @@ namespace ClickerClass.Items
                     // Metal Double Click Effect
                     if (itemClickerEffect.Contains("Double Click") || wildMagic == 1)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 37);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 37);
                         Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, type, damage, knockBack, player.whoAmI);
                     }
 
                     // Hemo Clicker Effect
                     if (itemClickerEffect.Contains("Linger") || wildMagic == 2)
                     {
-                        Main.PlaySound(3, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 13);
+                        Main.PlaySound(SoundID.NPCHit, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 13);
 
                         for (int k = 0; k < 5; k++)
                         {
@@ -122,7 +122,7 @@ namespace ClickerClass.Items
                     // Bone Clicker Effect
                     if (itemClickerEffect.Contains("Lacerate") || wildMagic == 3)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 71);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 71);
                         Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, ModContent.ProjectileType<BoneClickerPro>(), damage, knockBack, player.whoAmI);
 
                         for (int k = 0; k < 10; k++)
@@ -135,7 +135,7 @@ namespace ClickerClass.Items
                     // Corruption Clicker Effect
                     if (itemClickerEffect.Contains("Dark Burst") || wildMagic == 4)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 70);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 70);
                         Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, ModContent.ProjectileType<DarkClickerPro>(), damage, knockBack, player.whoAmI);
 
                         for (int k = 0; k < 25; k++)
@@ -148,7 +148,7 @@ namespace ClickerClass.Items
                     // Crimson Clicker Effect
                     if (itemClickerEffect.Contains("Siphon") || wildMagic == 5)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 112);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 112);
                         Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, ModContent.ProjectileType<SinisterClickerPro>(), (int)(damage * 0.50f), knockBack, player.whoAmI);
 
                         for (int i = 0; i < 15; i++)
@@ -170,7 +170,7 @@ namespace ClickerClass.Items
                     // Meteor Clicker Effect
                     if (itemClickerEffect.Contains("Star Storm") || wildMagic == 6)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 42);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 42);
 
                         for (int k = 0; k < 3; k++)
                         {
@@ -194,7 +194,7 @@ namespace ClickerClass.Items
                     // Dungeon Clicker Effect
                     if (itemClickerEffect.Contains("Splash") || wildMagic == 7)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 86);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 86);
 
                         for (int k = 0; k < 6; k++)
                         {
@@ -205,7 +205,7 @@ namespace ClickerClass.Items
                     // Jungle Clicker Effect
                     if (itemClickerEffect.Contains("Stinging Thorn") || wildMagic == 8)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 17);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 17);
 
                         int index = -1;
 
@@ -237,14 +237,14 @@ namespace ClickerClass.Items
                     // Molten Clicker Effect
                     if (itemClickerEffect.Contains("Inferno") || wildMagic == 9)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 74);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 74);
                         Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, ModContent.ProjectileType<RedHotClickerPro>(), 0, knockBack, player.whoAmI);
                     }
 
                     // Night Clicker Effect
                     if (itemClickerEffect.Contains("Shadow Lash") || wildMagic == 10)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 103);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 103);
 
                         for (int k = 0; k < 6; k++)
                         {
@@ -255,7 +255,7 @@ namespace ClickerClass.Items
                     // Cobalt Clicker Effect
                     if (itemClickerEffect.Contains("Haste") || wildMagic == 11)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 24);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 24);
                         player.AddBuff(ModContent.BuffType<Haste>(), 300, false);
 
                         for (int i = 0; i < 15; i++)
@@ -277,7 +277,7 @@ namespace ClickerClass.Items
                     // Palladium Clicker Effect
                     if (itemClickerEffect.Contains("Regenerate") || wildMagic == 12)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 24);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 24);
                         player.AddBuff(BuffID.RapidHealing, 120, false);
 
                         for (int i = 0; i < 15; i++)
@@ -299,14 +299,14 @@ namespace ClickerClass.Items
                     // Mythril Clicker Effect
                     if (itemClickerEffect.Contains("Embrittle") || wildMagic == 13)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 101);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 101);
                         Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, ModContent.ProjectileType<MythrilClickerPro>(), 0, knockBack, player.whoAmI);
                     }
 
                     // Orich Clicker Effect
                     if (itemClickerEffect.Contains("Petal Storm") || wildMagic == 14)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 24);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 24);
 
                         for (int k = 0; k < 5; k++)
                         {
@@ -336,14 +336,14 @@ namespace ClickerClass.Items
                     // Adamantite Clicker Effect
                     if (itemClickerEffect.Contains("True Strike") || wildMagic == 15)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 71);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 71);
                         Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, ModContent.ProjectileType<AdamantiteClickerPro>(), damage, knockBack, player.whoAmI);
                     }
 
                     // Titanium Clicker Effect
                     if (itemClickerEffect.Contains("Razor's Edge") || wildMagic == 16)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 22);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 22);
 
                         for (int k = 0; k < 5; k++)
                         {
@@ -360,14 +360,14 @@ namespace ClickerClass.Items
                     // Crystal Clicker Effect
                     if (itemClickerEffect.Contains("Dazzle") || wildMagic == 17)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 28);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 28);
                         Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, ModContent.ProjectileType<CrystalClickerPro>(), 0, knockBack, player.whoAmI);
                     }
 
                     // Cursed Clicker Effect
                     if (itemClickerEffect.Contains("Cursed Eruption") || wildMagic == 18)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 74);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 74);
                         Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, ModContent.ProjectileType<CorruptClickerPro>(), damage, knockBack, player.whoAmI);
 
                         for (int k = 0; k < 30; k++)
@@ -380,7 +380,7 @@ namespace ClickerClass.Items
                     // Ichor Clicker Effect
                     if (itemClickerEffect.Contains("Infest") || wildMagic == 19)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 24);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 24);
 
                         for (int k = 0; k < 8; k++)
                         {
@@ -391,7 +391,7 @@ namespace ClickerClass.Items
                     // Pirate Clicker Effect
                     if (itemClickerEffect.Contains("Bombard") || wildMagic == 20)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 14);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 14);
 
                         for (int k = 0; k < 4; k++)
                         {
@@ -415,7 +415,7 @@ namespace ClickerClass.Items
                     // Hallowed Clicker Effect
                     if (itemClickerEffect.Contains("Holy Nova") || wildMagic == 21)
                     {
-                        Main.PlaySound(3, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 5);
+                        Main.PlaySound(SoundID.NPCHit, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 5);
 
                         for (int u = 0; u < Main.maxNPCs; u++)
                         {
@@ -465,7 +465,7 @@ namespace ClickerClass.Items
                     // Chloro Clicker Effect
                     if (itemClickerEffect.Contains("Toxic Release") || wildMagic == 22)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 104);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 104);
 
                         for (int k = 0; k < 10; k++)
                         {
@@ -477,7 +477,7 @@ namespace ClickerClass.Items
                     if (itemClickerEffect.Contains("Auto Click") || wildMagic == 23)
                     {
                         player.GetModPlayer<ClickerPlayer>().clickAmount++;
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 24);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 24);
                         player.AddBuff(ModContent.BuffType<AutoClick>(), 300, false);
 
                         for (int i = 0; i < 15; i++)
@@ -499,14 +499,14 @@ namespace ClickerClass.Items
                     // Temple Clicker Effect
                     if (itemClickerEffect.Contains("Solar Flare") || wildMagic == 24)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 68);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 68);
                         Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, ModContent.ProjectileType<LihzarhdClickerPro>(), (int)(damage * 0.5f), 0f, player.whoAmI);
                     }
 
                     // Martian Clicker Effect
                     if (itemClickerEffect.Contains("Discharge") || wildMagic == 25)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 94);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 94);
 
                         for (int k = 0; k < 4; k++)
                         {
@@ -523,7 +523,7 @@ namespace ClickerClass.Items
                     // Moon Lord Clicker Effect
                     if (itemClickerEffect.Contains("Conqueror") || wildMagic == 26)
                     {
-                        Main.PlaySound(2, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 88);
+                        Main.PlaySound(SoundID.Item, (int)Main.MouseWorld.X, (int)Main.MouseWorld.Y, 88);
                         Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, ModContent.ProjectileType<LordsClickerPro>(), (int)(damage * 2f), 0f, player.whoAmI);
                     }
                 }

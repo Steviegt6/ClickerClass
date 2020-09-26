@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace ClickerClass.Items
 {
@@ -16,7 +17,7 @@ namespace ClickerClass.Items
             item.height = 20;
             item.accessory = true;
             item.value = 10000;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

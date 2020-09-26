@@ -29,12 +29,12 @@ namespace ClickerClass.Items
             item.height = 30;
             item.useTime = 1;
             item.useAnimation = 1;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.holdStyle = 3;
             item.knockBack = 1f;
             item.noMelee = true;
             item.value = 1000;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
             item.shoot = mod.ProjectileType("ClickDamage");
             item.shootSpeed = 1f;
         }
