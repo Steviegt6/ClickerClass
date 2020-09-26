@@ -44,8 +44,7 @@ namespace ClickerClass.Items
 
                 if (!itemClickerEffect.Contains("Phase Reach"))
                 {
-                    return Vector2.Distance(Main.MouseWorld, player.Center) < 100 * player.GetModPlayer<ClickerPlayer>().clickerRadius
-                    && Collision.CanHit(new Vector2(player.Center.X, player.Center.Y - 12), 1, 1, Main.MouseWorld, 1, 1);
+                    return Vector2.Distance(Main.MouseWorld, player.Center) < 100 * player.GetModPlayer<ClickerPlayer>().clickerRadius && Collision.CanHit(new Vector2(player.Center.X, player.Center.Y - 12), 1, 1, Main.MouseWorld, 1, 1);
                 }
             }
 
